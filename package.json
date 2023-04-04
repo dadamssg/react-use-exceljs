@@ -1,8 +1,11 @@
 {
   "name": "react-use-exceljs",
-  "private": true,
+  "repository": "https://github.com/dadamssg/react-use-exceljs",
   "version": "0.0.0",
   "type": "module",
+  "main": "dist/react-use-exceljs.umd.cjs",
+  "module": "dist/react-use-exceljs.js",
+  "types": "dist/react-use-exceljs.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -20,6 +23,7 @@
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^3.1.0",
     "prettier": "^2.8.7",
+    "semantic-release": "^21.0.1",
     "typescript": "^4.9.3",
     "vite": "^4.2.0",
     "vite-plugin-dts": "^2.2.0"
