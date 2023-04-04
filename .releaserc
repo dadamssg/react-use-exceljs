@@ -1,3 +1,4 @@
 {
-  "branches": ["main"]
+  "branches": ["main"],
+  "repositoryUrl": "https://github.com/dadamssg/react-use-exceljs"
 }
