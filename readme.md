@@ -140,6 +140,34 @@ const excel = useExcelJS({
 })
 ```
 
+You can also use the non-hook function version which the `useExcelJS` uses internally.
+
+```ts
+import { downloadExcelJS } from 'react-use-exceljs'
+
+const onClick = () => {
+  downloadExcelJS({
+    filename: "testing.xlsx",
+    data: [
+      {id: 1},
+      {id: 2}
+    ],
+    worksheets: [
+      {
+        name: "Sheet 1",
+        columns: [
+          {
+            header: "Id",
+            key: "id",
+            width: 10,
+          },
+        ],
+      },
+    ],
+  }) 
+}
+```
+
 
 ## Optimization
-The hook lazily imports `file-saver` and the rather large `exceljs` package only once the `download` function is executed.
+The `file-saver` and the rather large `exceljs` packages are lazily loaded on initiation of an excel download.
