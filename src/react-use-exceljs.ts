@@ -20,7 +20,7 @@ export function useExcelJS<T extends Array<Sheet>>({
   }
 }
 
-async function downloadExcelJS<T extends Array<Sheet>>({
+export async function downloadExcelJS<T extends Array<Sheet>>({
   filename,
   data,
   worksheets,
