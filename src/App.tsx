@@ -7,7 +7,7 @@ const data = [
 
 function App() {
   const excel = useExcelJS({
-    filename: ".xlsx",
+    filename: "report.xlsx",
     intercept: (workbook) => {
       workbook.getWorksheet("Sheet 1").getColumn("id").fill = {
         type: "pattern",
