@@ -1,4 +1,4 @@
-import useExcelJS from "./react-use-exceljs"
+import { useExcelJS } from "./react-use-exceljs"
 
 const data = [
   { id: 1, name: "Jane Doe", dob: new Date(1984, 6, 7) },

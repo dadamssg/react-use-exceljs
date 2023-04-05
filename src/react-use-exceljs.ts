@@ -2,7 +2,7 @@ import React from "react"
 import { type Data, type Filename, type InterceptFn, type Sheet } from "./types"
 import makeBuffer from "./makeBuffer"
 
-export default function useExcelJS<T extends Array<Sheet>>({
+export function useExcelJS<T extends Array<Sheet>>({
   filename,
   worksheets,
   intercept,

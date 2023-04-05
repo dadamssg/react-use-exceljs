@@ -5,7 +5,7 @@ A thin wrapper around the [exceljs](https://github.com/exceljs/exceljs) package 
 ## Usage
 
 ```tsx
-import useExcelJS from "react-use-exceljs"
+import { useExcelJS } from "react-use-exceljs"
 
 const data = [
   { id: 1, name: "Jane Doe", dob: new Date(1984, 6, 7) },
