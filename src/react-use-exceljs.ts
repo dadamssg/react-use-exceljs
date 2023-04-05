@@ -1,5 +1,4 @@
 import React from "react"
-import { saveAs } from "file-saver"
 import { type Data, type Filename, type InterceptFn, type Sheet } from "./types"
 import makeBuffer from "./makeBuffer"
 
@@ -18,6 +17,7 @@ export default function useExcelJS<T extends Array<Sheet>>({
         const buffer = await makeBuffer({ worksheets, data, intercept })
         const fileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         const blob = new Blob([buffer], { type: fileType })
+        const { default: {saveAs} } = await import("./deps")
         saveAs(blob, filename ?? "workbook.xlsx")
       },
       [filename, worksheets, intercept]
