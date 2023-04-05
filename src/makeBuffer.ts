@@ -1,6 +1,6 @@
 import { InterceptFn, Sheet } from "./types"
 
-export default async function makeBuffer<T extends ReadonlyArray<Sheet>>({
+export default async function makeBuffer<T extends Array<Sheet>>({
   worksheets,
   data,
   intercept,
