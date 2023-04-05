@@ -62,7 +62,7 @@ test("can create two sheets", async () => {
         { city: 'Dallas' },
         { city: 'New York' },
         { city: 'Miami' },
-      ]
+      ],
     },
     worksheets: [worksheetA, worksheetB],
   })

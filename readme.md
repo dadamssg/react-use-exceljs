@@ -142,4 +142,4 @@ const excel = useExcelJS({
 
 
 ## Optimization
-The hook lazily imports the rather large `exceljs` package only once the `download` function is executed.
+The hook lazily imports `file-saver` and the rather large `exceljs` package only once the `download` function is executed.
