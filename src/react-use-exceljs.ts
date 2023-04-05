@@ -1,10 +1,7 @@
-import { type Workbook, type Worksheet } from "exceljs"
-import { saveAs } from "file-saver"
 import React from "react"
-
-type Sheet = { name: string; columns: Worksheet["columns"] }
-type InterceptFn = (workbook: Workbook) => Workbook | void
-type Filename = `${string}.xlsx`
+import { saveAs } from "file-saver"
+import { type Data, type Filename, type InterceptFn, type Sheet } from "./types"
+import makeBuffer from "./makeBuffer"
 
 export default function useExcelJS<T extends Array<Sheet>>({
   filename,
@@ -15,22 +12,10 @@ export default function useExcelJS<T extends Array<Sheet>>({
   filename?: Filename
   intercept?: InterceptFn
 }) {
-  type WorksheetName = T[number]["name"]
-  type Data = Array<any> | Record<WorksheetName, Array<any>>
-
   return {
     download: React.useCallback(
-      async (data: Data) => {
-        const ExcelJS = await import("exceljs")
-        let workbook = new ExcelJS.Workbook()
-        for (const worksheet of worksheets) {
-          const sheet = workbook.addWorksheet(worksheet.name)
-          sheet.columns = worksheet.columns
-          const rows = (Array.isArray(data) ? data : data[worksheet.name as WorksheetName]) ?? []
-          sheet.addRows(rows)
-        }
-        workbook = intercept ? intercept(workbook) ?? workbook : workbook
-        const buffer = await workbook.xlsx.writeBuffer()
+      async (data: Data<T>) => {
+        const buffer = await makeBuffer({ worksheets, data, intercept })
         const fileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         const blob = new Blob([buffer], { type: fileType })
         saveAs(blob, filename ?? "workbook.xlsx")
